@@ -5,12 +5,15 @@ import { Item } from './types/item';
 import { Detail } from './components/Detail';
 
 function App () {
+  const isDevelopment = import.meta.env.VITE_ENV === 'development';
+  const apiBaseUrl = isDevelopment ? '/api/' : '/.netlify/functions/fetchData?endpoint=';
+
   const [list, setList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const [selectedItem, setSelectedItem] = useState<Item | null>(null);
   useEffect(() => {
-    fetch('/api/senior-fe-menu-challenge.json')
+    fetch(`${apiBaseUrl}senior-fe-menu-challenge.json`)
       .then((res) => {
         return res.json();
       })
