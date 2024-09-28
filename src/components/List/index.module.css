@@ -1,0 +1,117 @@
+.list__wrapper {
+  height: 100%;
+}
+
+.list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-unit);
+  padding-top: 0;
+  margin-left: calc(-1 * var(--spacing-unit));
+}
+
+
+.list::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset var(--box-shadow);
+  border-radius: 10px;
+  background: transparent;
+  /* background-color: #F5F5F5; */
+}
+
+.list::-webkit-scrollbar {
+  width: 12px;
+  /* background-color: #F5F5F5; */
+}
+
+.list::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset var(--box-shadow);
+  background-color: #555;
+}
+
+
+.list__item:not(:first-child, :last-child, :nth-child(2)) {
+  margin-top: 5px;
+}
+
+.list__item .list__item-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  background: white;
+  padding: calc(var(--spacing-unit)/2) var(--spacing-unit);
+  border: 1px solid #dfdfdf;
+  border-radius: calc(var(--spacing-unit)/2);
+  transition: box-shadow 0.2s;
+  position: relative;
+}
+
+
+.list__item .list__item-content:hover {
+  /* border-color: var(--gray); */
+  border-color: transparent;
+}
+
+.list__item .list__item-content.selected {
+  box-shadow: var(--box-shadow);
+  background: var(--light-blue);
+}
+
+.list__item .list__item-content>div {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: calc(var(--spacing-unit)/2);
+  border: 1px solid var(--gray);
+}
+
+.list__item .list__item-content>div button {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  border: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.list__item .list__item-content:hover>div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: var(--spacing-unit);
+}
+
+.list__item.spacer div {
+  padding: 0;
+  background: repeating-linear-gradient(180deg, var(--bg-color), var(--bg-color) 5px, white 5px, white 40px);
+  border: none;
+}
+
+
+
+.list__item button {
+  background: transparent;
+}
+
+.list__item button svg {
+  fill: var(--gray);
+  transition: filter 0.2s;
+}
+
+.list__item button:hover svg {
+  filter: brightness(85%);
+}
+
+.list__item p {
+  margin: 0;
+  display: flex;
+}

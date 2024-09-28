@@ -1,24 +1,45 @@
 import { useEffect, useState } from 'react';
 import './App.css'
+import { List } from './components/List';
+import { Item } from './types/item';
+import { Detail } from './components/Detail';
 
 function App () {
   const [list, setList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [selectedItem, setSelectedItem] = useState<Item | null>(null);
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/photos')
+    fetch('/api/senior-fe-menu-challenge.json')
       .then((res) => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         setList(data);
+        setIsLoading(false);
       });
   }, []);
+
   return (
-    <ul style={{ maxHeight: "500px", overflow: "auto" }}>
-      {list.map((list: { title: string, id: number }) => (
-        <li key={list.id}>{list.title}</li>
-      ))}
-    </ul>
+    <div className="container">
+      <div className="wrapper">
+
+
+        <List
+          isLoading={isLoading}
+          data={list}
+          selectedItem={selectedItem}
+          setSelectedItem={setSelectedItem}
+        />
+
+        {selectedItem ?
+          <Detail selectedItem={selectedItem} setSelectedItem={setSelectedItem} /> : <div></div>
+        }
+
+
+      </div>
+    </div>
+
   )
 }
 
