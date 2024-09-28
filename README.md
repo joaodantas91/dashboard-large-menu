@@ -1,64 +1,120 @@
 # Qikserve's Dashboard Menu challenge
 
-This challenge consists of building a react application to allow managers managing a menu in a restaurant.
-Of course, we are gonna build limited features as a whole dashboard would take too much time :D
+  
 
-Restaurant Data should be consumed from the provided json below. Do not mock the json's, fetch the data from url below.
-[https://cdn-dev.preoday.com/senior-fe-menu-challenge.json](https://cdn-dev.preoday.com/senior-fe-menu-challenge.json)
+## Overview
 
+  
 
-## Deliveries
-- Please deploy the solution in a shared URL so i can see the results without needing to run.
-- Please fork this repository on your account and invite ronaldo.zanoni@qikserve.com, felipe.loge@qikserve.com and caio.ricci@qikserve.com.
+This project is a front-end challenge developed using React, TypeScript, and Vite.
+  
 
+## Installation
 
+  
 
-## UI - Application
+To set up this project locally, follow these steps:
 
-I expect your application to be able to:
-- Render all items from URL above (I'm not expliciting how)
-- - Please don't use paginations. I don't to click on page to see its contents.
-- An item should be showing:
-- - Item name
-- - Item image (if available)
-- When hovering an item, i would like to see an "edit" button
-- Clicking on "edit" button, i would like to see the item's details on right side.
-- I don't expect to see lags in the application.
+  
 
-An example of how it is in our platform currently:
-![MicrosoftTeams-image (118)](https://github.com/qsengineers/dashboard-large-menu/assets/134649881/57876e34-8d5b-44ff-b291-f08f780a303c)
+1.  **Clone the repository:**
 
+```bash
 
-
-## Item example
+git clone https://github.com/joaodantas91/dashboard-large-menu
 
 ```
-{
-        "id": 1529509,
-        "externalId": "5023377855405,1",
-        "name": "WECOMPJACKS MAGIC AP ",
-        "internalName": "WECOMPJACKS MAGIC AP ",
-        "description": "WE Comp Jacks Magic All Purpose 60L",
-        "deliveryFlag": 1,
-        "pickupFlag": 1,
-        "seatFlag": 0,
-        "price": 5.75,
-        "visible": 1,
-        "availabilityType": "AVAILABLE_NOW",
-        "sku": "I1529509",
-        "created": "2020-03-26T14:30:43.000+0000",
-        "updated": "2020-11-11T18:59:15.000+0000",
-        "images": [
-            {
-                "id": 557839,
-                "itemId": 1529509,
-                "image": "/usr/venue/9043/menuItem/5e7cbfccc61d5.png",
-                "position": 0,
-                "created": "2020-03-26T14:44:29.000+0000",
-                "updated": "2020-03-26T14:44:29.000+0000"
-            }
-        ],
-        "availableForPublish": true,
-        "available": true
-    }
+
+2.  **Navigate into the project directory:**
+
+```bash
+
+cd yourproject
+
 ```
+
+3.  **Install dependencies:**
+
+```bash
+
+npm install
+
+```
+
+4. **Create the .env file:**
+
+In the root of your project, create a .env file to define your environment variables:
+
+```bash
+
+touch .env
+
+```
+
+Then, open the .env file and add the following content:
+
+
+```bash
+
+VITE_ENV=development
+
+```
+
+This will set up the environment variable needed to determine the environment (development or production).
+
+1.  **Start the development server:**
+
+```bash
+
+npm run dev
+
+```
+
+  
+
+The application will be available at [http://localhost:5173/](http://localhost:5173/) by default.
+
+  
+
+## Usage
+
+  
+
+To start using the application:
+
+  
+
+1.  **Run the Development Server:**
+
+```bash
+
+npm run dev
+
+```
+
+2.  **Build for Production:**
+
+```bash
+
+npm run build
+
+```
+
+This command creates a production-ready build in the `dist` directory.
+
+  
+
+3.  **Preview Production Build:**
+
+```bash
+
+npm run preview
+
+```
+
+This command serves the production build locally for testing.
+  
+
+## Process and Choices
+
+At first glance I identified that this would be a problem I could solve with virtual lists due to the large size of the JSON, I created spacers at the bottom and top of the list to simulate the spacing for scrolling, but I was facing a problem where, when scrolling, the new items were taking a long time to render, so I had the idea of already defining the state of the new items within handleScroll, so that it would slice the array before the new rendering started. This solved the problem, but when I scrolled faster, it started to briefly show the spacers, so I had the idea of rendering more items than before, for example, triple (I thought of “triple” because I would have the same amount of items below and above the visible items), and it worked very well and without any problems 
