@@ -1,6 +1,6 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
-exports.handler = async function (event, context) {
+export async function handler (event, context) {
   const { endpoint } = event.queryStringParameters; // Extract endpoint from query parameters
   const apiUrl = `https://cdn-dev.preoday.com/${endpoint}`; // Construct the API URL
 
@@ -22,4 +22,4 @@ exports.handler = async function (event, context) {
       body: JSON.stringify({ error: 'Failed to fetch data' }),
     };
   }
-};
+}
