@@ -6,6 +6,7 @@ import { Detail } from './components/Detail';
 
 function App () {
   const isDevelopment = import.meta.env.VITE_ENV === 'development';
+  console.log(import.meta.env.VITE_ENV)
   const url = isDevelopment ?
     '/api/senior-fe-menu-challenge.json' :
     'https://cors-proxy4.p.rapidapi.com/?url=https%3A%2F%2Fcdn-dev.preoday.com%2Fsenior-fe-menu-challenge.json';
